@@ -1,0 +1,14 @@
+Sistema de login 
+Opcion de listado de los alumnos
+Acceder a las notas de ese alumno
+Asistencia
+Desde esa misma pantalla
+
+Una grilla que tenga el curso, la nota, que tengan 3 notas una columna
+para cada una y la asistencia
+Listado de cursos
+
+ABM Ingresar la nota que se guarde en la base de datos y se muestre
+
+
+

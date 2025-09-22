@@ -1,0 +1,164 @@
+/* Fuente */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #e8edf3;
+    color: #333;
+}
+
+.login-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Contenedor general */
+.container {
+    display: flex;
+    max-width: 1000px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: #34495e;
+    padding: 2rem 1rem;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar li {
+    margin: 1rem 0;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+.sidebar a:hover {
+    background: #2c3e50;
+}
+
+/* Main content */
+.contenido-menu {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Tabla estilizada */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+th {
+    background: #f0f0f0;
+}
+
+/* Formularios y botones */
+input, select, button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+button:hover {
+    background: #2980b9;
+}
+
+
+/* Tabla alumnos */
+
+.tabla-contenido {
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.cursos-contenido {
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+.tabla-alumnos {
+    background: white;
+    color: #333;
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.tabla-cursos {
+    background: white;
+    color: #333;
+    width: 100%;
+    max-width: 700px;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tabla-cursos td {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.tabla-cursos td:hover {
+    background: #f0f0f0;
+    transform: scale(1.3);
+}
