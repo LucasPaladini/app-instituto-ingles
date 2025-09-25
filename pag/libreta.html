@@ -1,45 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libreta</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
-<header>
-    <h1>Libreta</h1>
-</header>
-
 <body>
-    <div class="tabla-contenido">
-    <table class="tabla-alumnos">
-        <thead>
-        <tr>
-            <th>DNI</th>
-            <th>Nombre</th>         
-            <th>Nota</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>45023003</td>
-            <td>Ana Pérez</td>
-            <td>Ana Pérez</td>
-        </tr>
-        <tr>
-            <td>45023300</td>
-            <td>Juan Gómez</td>
-            <td>Ana Pérez</td>
-        </tr>
-      
-        </tbody>
-    </table>
-</div>
 
-<footer>
-  <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025 </p>
-</footer>
+    <header>
+        <h1>Ingrese el DNI del Alumno</h1>
+    </header>
+
+    <div class="tabla-contenido">
+        <!-- Contenedor del formulario de consulta -->
+        <div class="consulta-dni">
+            <input type="number" id="dniInput" placeholder="Ej: 38542193">
+            <button onclick="buscarDni()">Consultar</button>
+        </div>
+    </div>
+
+    <div id="resultado"></div>
+
+
+    <footer>
+        <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025 </p>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
 
 </body>
 </html>

@@ -125,6 +125,14 @@ button:hover {
     justify-content: center;
 }
 
+.tabla-contenido label {
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
 .cursos-contenido {
     background: linear-gradient(90deg, #2c3e50, #4a6073);
     padding: 2rem;
@@ -179,4 +187,8 @@ footer {
   text-align: center;
   padding: 5px;
   margin-top: 2rem;
+}
+
+tr {
+    cursor: pointer;
 }
