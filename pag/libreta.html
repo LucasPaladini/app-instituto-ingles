@@ -7,27 +7,31 @@
 </head>
 <body>
 
-    <header>
-        <h1>Ingrese el DNI del Alumno</h1>
-    </header>
+<header>
+    <h1>Libreta del Alumno</h1>
+</header>
 
-    <div class="tabla-contenido">
-        <!-- Contenedor del formulario de consulta -->
-        <div class="consulta-dni">
-            <input type="number" id="dniInput" placeholder="Ej: 38542193">
-            <button onclick="buscarDni()">Consultar</button>
-        </div>
+<header>
+    <h1>Busque por DNI del Alumno</h1>
+</header>
+
+<div class="tabla-contenido-libreta">
+    <div class="consulta-dni">
+        <label for="dniInput"></label>
+        <input type="number" id="dniInput" placeholder="Ej: 38542193">
+        <button onclick="buscarDni()">Consultar</button>
     </div>
+</div>
 
-    <div id="resultado"></div>
-
-
-    <footer>
-        <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025 </p>
-    </footer>
+<div id="resultado"></div>
 
 
-    <script src="../js/script.js"></script>
+
+<script src="../js/libreta.js"></script>
+
+<footer>
+    <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025</p>
+</footer>
 
 </body>
 </html>
