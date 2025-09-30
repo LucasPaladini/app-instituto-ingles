@@ -28,18 +28,19 @@ body {
 header {
     background: linear-gradient(90deg, #2c3e50, #4a6073);
     color: white;
-    padding: 1rem;
+    padding: 1px;
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+
 /* Contenedor general */
 .container {
     display: flex;
     max-width: 1000px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     background: white;
     border-radius: 12px;
     overflow: hidden;
@@ -120,7 +121,8 @@ button:hover {
 
 .tabla-contenido {
     background: linear-gradient(90deg, #2c3e50, #4a6073);
-    padding: 2rem;
+    padding-top: 10px;
+    padding: 5px;
     display: flex;
     justify-content: center;
 }
@@ -135,7 +137,7 @@ button:hover {
 
 .cursos-contenido {
     background: linear-gradient(90deg, #2c3e50, #4a6073);
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -150,6 +152,7 @@ button:hover {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 10rem;
 }
 
 .tabla-cursos {
@@ -166,7 +169,7 @@ button:hover {
 .tabla-cursos td {
     font-size: 2rem;
     font-weight: bold;
-    padding: 2rem;
+    padding: 1rem;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
