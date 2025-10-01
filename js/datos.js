@@ -29,5 +29,7 @@ const alumnos = [
     { dni: "45464567", nombre: "Bruno Méndez", curso: "Libre", email: "bruno.mendez@mail.com" },
     { dni: "45578901", nombre: "Mía Gutiérrez", curso: "Libre", email: "mia.gutierrez@mail.com" },
     { dni: "45692345", nombre: "Felipe Castro", curso: "Libre", email: "felipe.castro@mail.com" },
-    { dni: "45806789", nombre: "Malena Pérez", curso: "Libre", email: "malena.perez@mail.com" }
+    { dni: "45806789", nombre: "Malena Pérez", curso: "Libre", email: "malena.perez@mail.com" },
+    { dni: "35221758", nombre: "Emanuel Monella", curso: "Libre", email: "emanuel.monela@mail.com" },
+    { dni: "44021430", nombre: "Lucas Paladini", curso: "Libre", email: "lucas.paladini@mail.com" },
 ];

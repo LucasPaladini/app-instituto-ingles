@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tbody = document.querySelector(".tabla-alumnos tbody");
 
-    // Inyecta los alumnos en la tabla
     tbody.innerHTML = alumnos.map(a => `
         <tr>
             <td>${a.dni}</td>
