@@ -12,6 +12,9 @@ Cristian L'huillier
 **Profesor de práctica profesionalizante II**  
 Sebastian Bruselario  
 
+**Profesor de práctica programación II**  
+Gerardo Herrera 
+
 **Alumno**  
 Lucas Paladini  
 
