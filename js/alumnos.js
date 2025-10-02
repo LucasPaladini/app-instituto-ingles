@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </tr>
     `).join("");
 
-    // Agrega click a cada fila
+
     const filas = tbody.querySelectorAll("tr");
     filas.forEach(fila => {
-        fila.style.cursor = "pointer"; // indica clickeable
+        fila.style.cursor = "pointer";
         fila.addEventListener("click", () => {
-            const dni = fila.children[0].innerText; // toma DNI
-            sessionStorage.setItem("dniSeleccionado", dni); // guarda DNI
-            window.location.href = "libreta.html"; // redirige
+            const dni = fila.children[0].innerText;
+            sessionStorage.setItem("dniSeleccionado", dni);
+            window.location.href = "libreta.html";
         });
     });
 });
