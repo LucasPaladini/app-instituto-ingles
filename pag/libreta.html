@@ -5,25 +5,23 @@
     <title>Libreta</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="body-libreta">
 
 <header>
     <h1>Libreta del Alumno</h1>
-</header>
-
-<header>
     <h1>Busque por DNI del Alumno</h1>
 </header>
 
 <div class="tabla-contenido-libreta">
     <div class="consulta-dni">
-        <label for="dniInput"></label>
+        <label for="dniInput">Ingrese DNI del alumno: </label>
         <input type="number" id="dniInput" placeholder="Ej: 38542193">
         <button onclick="buscarDni()">Consultar</button>
     </div>
+    <table id="resultado"></table>
 </div>
 
-<div id="resultado"></div>
+
 
 
 
