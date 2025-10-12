@@ -218,6 +218,82 @@ button:hover {
     border-spacing: 0;
 }
 
+.boton-agregar-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#boton-mostrar-form {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#boton-mostrar-form:hover {
+    background-color: #0056b3;
+}
+
+.agregar-alumno {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px 20px;
+    background-color: #2c3e50; /* más oscuro que el body */
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    display: none; /* oculto por defecto */
+}
+
+.agregar-alumno h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: #1abc9c;
+}
+
+.agregar-alumno .formulario-filas {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.agregar-alumno label {
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.agregar-alumno input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.agregar-alumno button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1abc9c;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.agregar-alumno button:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+}
+
+
 /* libreta */
 
 .tabla-contenido-libreta {
