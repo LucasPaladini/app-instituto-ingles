@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Cursos</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cursos.css">
 </head>
 <body class="body-cursos">
 
@@ -17,6 +18,7 @@
     <h1>Cursos</h1>
 </header>
 
+<!-- Tabla de cursos -->
 <div class="cursos-contenido">
     <table class="tabla-cursos">
         <tbody>
@@ -28,16 +30,27 @@
     </table>
 </div>
 
+<!-- Tabla de alumnos que se llenará al hacer clic -->
 <div class="cursos-contenido">
-    <table class="tabla-alumnos"></table>
+    <table class="tabla-alumnos">
+        <thead>
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Curso</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Aquí se cargan los alumnos -->
+        </tbody>
+    </table>
 </div>
-
 
 <footer>
     <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025</p>
 </footer>
 
-<script src="../js/datos.js"></script>
 <script src="../js/cursos.js"></script>
 </body>
 </html>

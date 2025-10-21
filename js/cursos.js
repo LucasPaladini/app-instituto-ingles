@@ -1,38 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
     const filas = document.querySelectorAll(".tabla-cursos tbody tr");
-    const contenedor = document.querySelector(".tabla-alumnos");
+    const tablaAlumnos = document.querySelector(".tabla-alumnos tbody");
 
     filas.forEach(fila => {
-        fila.style.cursor = "pointer";
-        fila.addEventListener("click", () => {
-            const cursoSeleccionado = fila.children[0].innerText;
+        fila.addEventListener("click", async () => {
+            // Resaltar fila seleccionada
+            filas.forEach(f => f.classList.remove("selected"));
+            fila.classList.add("selected");
 
-            // Filtrar alumnos
-            const filtrados = alumnos.filter(a => a.curso === cursoSeleccionado);
+            const nombreCurso = fila.children[0].innerText;
 
-            // Crear tabla
-            contenedor.innerHTML = `
-        <table class="tabla-alumnos">
-          <thead>
-            <tr>
-              <th>DNI</th>
-              <th>Nombre</th>
-              <th>Curso</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${filtrados.map(a => `
-              <tr>
-                <td>${a.dni}</td>
-                <td>${a.nombre}</td>
-                <td>${a.curso}</td>
-                <td>${a.email}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      `;
+            try {
+                const res = await fetch(`http://127.0.0.1:5000/alumnos?curso=${nombreCurso}`);
+                const alumnos = await res.json();
+
+                // Llenar tabla de alumnos
+                if (alumnos.length) {
+                    tablaAlumnos.innerHTML = alumnos.map(a => `
+                        <tr>
+                            <td>${a.dni}</td>
+                            <td>${a.nombre}</td>
+                            <td>${a.curso}</td>
+                            <td>${a.email}</td>
+                        </tr>
+                    `).join("");
+                } else {
+                    tablaAlumnos.innerHTML = `<tr><td colspan="4">No hay alumnos en este curso</td></tr>`;
+                }
+            } catch (error) {
+                console.error("Error al cargar alumnos:", error);
+                tablaAlumnos.innerHTML = `<tr><td colspan="4">Error al cargar alumnos</td></tr>`;
+            }
         });
     });
 });
