@@ -22,7 +22,7 @@
 </div>
 
 <!-- Formulario Agregar -->
-<div class="agregar-modificar-alumno" id="form-container">
+<div class="agregar-modificar-alumno" id="form-container" style="display: none">
     <h2>Agregar alumno</h2>
     <form id="form-alumno">
         <div class="formulario-filas">
@@ -55,13 +55,15 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
-        <button type="submit">Agregar</button>
-        <button type="button" id="btn-cancelar-agregar">Cancelar</button>
+        <div class="botones-formulario">
+            <button type="submit">Agregar</button>
+            <button type="button" id="boton-cancelar-agregar">Cancelar</button>
+        </div>
     </form>
 </div>
 
 <!-- Formulario Modificar -->
-<div class="agregar-modificar-alumno" id="form-modificar-container">
+<div class="agregar-modificar-alumno" id="form-modificar-container" style="display: none">
     <h2>Modificar alumno</h2>
     <form id="form-modificar">
         <div class="formulario-filas">
@@ -94,8 +96,10 @@
             <label for="mod-email">Email:</label>
             <input type="email" id="mod-email" name="email" required>
         </div>
-        <button type="submit">Guardar cambios</button>
-        <button type="button" id="btn-cancelar-modificar">Cancelar</button>
+        <div class="botones-formulario">
+            <button type="submit">Guardar cambios</button>
+            <button type="button" id="boton-cancelar-modificar">Cancelar</button>
+        </div>
     </form>
 </div>
 

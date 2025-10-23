@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formModificarContainer = document.getElementById("form-modificar-container");
     const formAgregar = document.getElementById("form-alumno");
     const formModificar = document.getElementById("form-modificar");
-    const btnMostrarForm = document.getElementById("boton-mostrar-form");
+    const botonMostrarForm = document.getElementById("boton-mostrar-form");
 
     async function cargarAlumnos() {
         try {
@@ -53,16 +53,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cargarAlumnos();
 
-    btnMostrarForm.addEventListener("click", () => {
+    botonMostrarForm.addEventListener("click", () => {
         formAgregarContainer.style.display = formAgregarContainer.style.display === "none" ? "block" : "none";
         formAgregar.scrollIntoView({ behavior: "smooth" });
     });
 
-    document.getElementById("btn-cancelar-agregar").addEventListener("click", () => {
+    document.getElementById("boton-cancelar-agregar").addEventListener("click", () => {
         formAgregarContainer.style.display = "none";
     });
 
-    document.getElementById("btn-cancelar-modificar").addEventListener("click", () => {
+    document.getElementById("boton-cancelar-modificar").addEventListener("click", () => {
         formModificarContainer.style.display = "none";
     });
 

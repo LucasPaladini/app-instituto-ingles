@@ -1,6 +1,10 @@
 /* Fuente */
+*{
+    font-family:arial, calibri;
+}
 
 html, body {
+
     height: 100%;
     margin: 0;
     padding: 0;
@@ -18,11 +22,14 @@ body {
     background: linear-gradient(90deg, #2c3e50, #4a6073);
 }
 
-body table {
+body table,
+.tabla-alumnos,
+.tabla-cursos {
     background: white;
     color: #333;
-    width: 100%;
-    max-width: 900px;
+    width: 90%;
+    max-width: 90%;
+    margin: 1rem auto;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 12px;
@@ -30,15 +37,6 @@ body table {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.container,
-.contenedor-menu,
-.tabla-alumnos,
-.tabla-cursos,
-body table {
-    width: 90%;
-    max-width: 1000px;
-    margin: 1rem auto;
-}
 
 /*login*/
 
@@ -197,6 +195,18 @@ button:hover {
     background: #2980b9;
 }
 
+.boton-eliminar {
+    background: red;
+}
+
+.boton-eliminar:hover {
+    background: #9C1A1C;
+}
+
+.botones-formulario {
+    display: flex;
+    gap: 10px;
+}
 
 /* Tabla alumnos */
 
@@ -216,6 +226,44 @@ button:hover {
     margin-bottom: 10rem;
     border-collapse: separate;
     border-spacing: 0;
+    table-layout: fixed;
+}
+
+.tabla-alumnos th:nth-child(1),
+.tabla-alumnos td:nth-child(1) {
+    width: 5%;
+}
+
+.tabla-alumnos th:nth-child(2),
+.tabla-alumnos td:nth-child(2) {
+    width: 15%;
+}
+
+.tabla-alumnos th:nth-child(3),
+.tabla-alumnos td:nth-child(3) {
+    width: 15%;
+}
+
+.tabla-alumnos th:nth-child(4),
+.tabla-alumnos td:nth-child(4) {
+    width: 10%;
+}
+
+.tabla-alumnos th:nth-child(5),
+.tabla-alumnos td:nth-child(5) {
+    width: 25%;
+}
+
+.tabla-alumnos th:nth-child(6),
+.tabla-alumnos td:nth-child(6) {
+    width: 15%;
+}
+
+.tabla-alumnos th:nth-child(7),
+.tabla-alumnos td:nth-child(7),
+.tabla-alumnos th:nth-child(8),
+.tabla-alumnos td:nth-child(8) {
+    width: 20%;
 }
 
 .boton-agregar-container {
@@ -253,7 +301,6 @@ button:hover {
     padding: 30px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     display: none;
-    z-index: 9999;
 }
 
 .agregar-modificar-alumno h2 {
@@ -337,6 +384,10 @@ button:hover {
     padding: 1rem;
     display: flex;
     justify-content: center;
+}
+
+.cursos-contenido-titulos table{
+    max-width: 700px;
 }
 
 .tabla-cursos {
