@@ -22,7 +22,7 @@ def obtener_alumnos():
 @app.route("/alumnos", methods=["POST"])
 def agregar_alumno():
     data = request.json
-    if not data.get("nombre") or not data.get("curso"):
+    if not data.get("nombre") or not data.get("apellido") or not data.get("curso"):
         return jsonify({"error": "Faltan datos"}), 400
     alumnos.insert_one(data)
     return jsonify({"mensaje": "Alumno agregado correctamente"})

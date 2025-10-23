@@ -22,13 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         <tr>
                             <td>${a.dni}</td>
                             <td>${a.nombre}</td>
+                            <td>${a.apellido || ""}</td>
                             <td>${a.curso}</td>
                             <td>${a.email}</td>
+                            <td>${a.direccion || ""}</td>
                         </tr>
                       `).join("")
-                    : `<tr><td colspan="4">No hay alumnos en este curso</td></tr>`;
+                    : `<tr><td colspan="6">No hay alumnos en este curso</td></tr>`;
             } catch {
-                cuerpo.innerHTML = `<tr><td colspan="4">Error al cargar alumnos</td></tr>`;
+                cuerpo.innerHTML = `<tr><td colspan="6">Error al cargar alumnos</td></tr>`;
                 tabla.style.display = "table";
             }
         });
