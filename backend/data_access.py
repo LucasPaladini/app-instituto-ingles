@@ -28,6 +28,7 @@ def agregar_alumno():
     return jsonify({"mensaje": "Alumno agregado correctamente"})
 
 
+
 @app.route('/alumnos/<dni>', methods=['DELETE'])
 def eliminar_alumno(dni):
     from flask import jsonify
