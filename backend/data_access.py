@@ -28,7 +28,6 @@ def agregar_alumno():
     return jsonify({"mensaje": "Alumno agregado correctamente"})
 
 
-
 @app.route('/alumnos/<dni>', methods=['DELETE'])
 def eliminar_alumno(dni):
     from flask import jsonify
@@ -47,6 +46,29 @@ def modificar_alumno(dni):
     if resultado.matched_count == 0:
         return jsonify({"error": "Alumno no encontrado"}), 404
     return jsonify({"mensaje": f"Alumno {dni} modificado correctamente"}), 200
+
+
+@app.route("/alumnos/<dni>/notas", methods=["PUT"])
+def agregar_o_editar_notas(dni):
+    nueva_nota = request.get_json()
+    alumno = alumnos.find_one({"dni": dni})
+    if not alumno:
+        return jsonify({"error": "Alumno no encontrado"}), 404
+
+    notas = alumno.get("notas", [])
+
+    # Ver si ya hay notas para ese año
+    año_existente = next((n for n in notas if n["anio"] == nueva_nota["anio"]), None)
+    if año_existente:
+        # Actualizar curso y trimestres
+        año_existente["curso"] = nueva_nota.get("curso", año_existente.get("curso"))
+        año_existente["trimestres"].update(nueva_nota.get("trimestres", {}))
+    else:
+        notas.append(nueva_nota)
+
+    alumnos.update_one({"dni": dni}, {"$set": {"notas": notas}})
+    return jsonify({"mensaje": "Notas agregadas o editadas correctamente"})
+
 
 
 if __name__ == "__main__":

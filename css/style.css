@@ -1,6 +1,5 @@
-/* Fuente */
-*{
-    font-family:arial, calibri;
+* {
+    font-family: arial, calibri;
 }
 
 html, body {
@@ -61,8 +60,7 @@ body table,
 /* Header */
 Header {
     color: white;
-    padding-left: 20rem;
-    text-align: left;
+    text-align: center;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -83,25 +81,39 @@ Header {
 }
 
 .contenedor-menu {
+    width: 80%;              /* ancho mayor */
+    max-width: 1000px;       /* opcional, para no crecer demasiado en pantallas grandes */
     display: flex;
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border: 1px solid white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    margin: 2% auto;         /* centrado horizontal */
 }
+
+
 
 
 /* Menu arriba de las paginas */
 
+/* Menu arriba de las páginas */
 .menu-div {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* centra el contenedor completo */
     align-items: center;
-    gap: 8rem;
+    gap: 4rem;               /* espacio entre los links */
     padding: 1rem 0;
     background: #2c3e50;
     box-sizing: border-box;
+}
+
+/* Cada link dentro del menu */
+
+.menu-div div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-div div a {
@@ -124,10 +136,11 @@ Header {
 /* Menu arriba de las paginas */
 
 /* Sidebar */
+
 .sidebar {
     width: 200px;
     background: linear-gradient(90deg, #2c3e50, #4a6073);
-    padding: 1rem 2rem;
+    padding: 1rem 0;          /* menos padding lateral */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,23 +150,30 @@ Header {
 .sidebar ul {
     list-style: none;
     padding: 0;
+    width: 100%;              /* que la lista ocupe todo el ancho */
 }
+
 .sidebar li {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
+    width: 100%;              /* que cada item ocupe todo el ancho */
 }
+
 .sidebar a {
     color: white;
     text-decoration: none;
     display: block;
-    padding: 10px 35px;
+    width: 100%;              /* ancho completo */
+    text-align: center;       /* centrado horizontal */
+    padding: 10px 0;          /* padding vertical solo */
     border-radius: 6px;
     transition: background 0.3s;
 }
 
 .sidebar a:hover {
     background: #2c3e50;
-    padding: 10px 35px;
 }
+
+/* Sidebar */
 
 /* Main content */
 .contenido-menu {
@@ -354,20 +374,94 @@ button:hover {
 
 /* libreta */
 
+/* Libreta - Estilos esenciales */
 .tabla-contenido-libreta {
-    background: linear-gradient(90deg, #2c3e50, #4a6073);
-    padding: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding: 10px;
+    background: linear-gradient(90deg,#2c3e50,#4a6073);
 }
 
 .tabla-contenido-libreta label {
-    margin: 1rem;
-    font-size: 1rem;
     color: #fff;
+    margin: 0.5rem 0;
 }
+
+
+/* Libreta */
+
+/* Libreta */
+.tabla-contenido-libreta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(90deg,#2c3e50,#4a6073);
+}
+
+.tabla-contenido-libreta label {
+    color:#fff;
+    margin:0.5rem 0;
+}
+
+.tabla-contenido-libreta .tabla-alumnos {
+    width: 100%;
+    max-width: 50%;
+    margin: 1rem auto;
+    table-layout: fixed;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background:white;
+    color:#333;
+    border-collapse: separate;
+    border-spacing:0;
+}
+
+.tabla-contenido-libreta .tabla-alumnos th,
+.tabla-contenido-libreta .tabla-alumnos td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(3),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(3),
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(4),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(4),
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(5),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(5) {
+    width: 15%;
+}
+
+.tabla-contenido-libreta button {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    background:#3498db;
+    color:white;
+    border:none;
+    transition: background 0.3s;
+}
+
+.tabla-contenido-libreta button:hover {
+    background:#2980b9;
+}
+
+.tabla-contenido-libreta .agregar-modificar-alumno {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    background:#2c3e50;
+    color:white;
+    border-radius:12px;
+    display:none;
+}
+
+
+
 
 /* Cursos */
 
@@ -412,6 +506,9 @@ button:hover {
     background: #f0f0f0;
     transform: scale(1.3);
 }
+
+
+/* Cursos */
 
 /* Footer */
 

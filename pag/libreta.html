@@ -20,13 +20,44 @@
 <div class="tabla-contenido-libreta">
     <div class="consulta-dni">
         <label for="dniInput">Ingrese DNI del alumno: </label>
-        <input type="number" id="dniInput" placeholder="Ej: 38542193">
-        <button onclick="buscarDni()">Consultar</button>
+        <input type="number" id="dniInput" value="44021430" placeholder="Ej: 38542193">
+        <button id="boton-consultar" onclick="buscarDni()">Consultar</button>
+        <button id="boton-agregar-notas" onclick="mostrarFormularioNotas()">Agregar Notas</button>
     </div>
-    <table id="resultado"></table>
+    <div id="resultado"></div>
 </div>
 
-
+<div id="modal-notas" class="agregar-modificar-alumno">
+    <h2>Agregar Notas</h2>
+    <div class="formulario-filas">
+        <label for="anioNota">Año:</label>
+        <input type="number" id="anioNota" placeholder="Ej: 2025">
+    </div>
+    <div class="formulario-filas">
+        <label for="cursoNota">Curso:</label>
+        <select id="cursoNota">
+            <option value="">Seleccione un curso</option>
+            <option value="Kinder">Kinder</option>
+            <option value="Preparatorio">Preparatorio</option>
+            <option value="Kids">Kids</option>
+            <option value="Libre">Libre</option>
+        </select>
+    </div>
+    <div class="formulario-filas">
+        <label for="trimestre1">1er Trimestre:</label>
+        <input type="number" id="trimestre1" min="0" max="10">
+    </div>
+    <div class="formulario-filas">
+        <label for="trimestre2">2do Trimestre:</label>
+        <input type="number" id="trimestre2" min="0" max="10">
+    </div>
+    <div class="formulario-filas">
+        <label for="trimestre3">3er Trimestre:</label>
+        <input type="number" id="trimestre3" min="0" max="10">
+    </div>
+    <button onclick="agregarNotas()">Guardar Notas</button>
+    <button onclick="cerrarFormularioNotas()">Cancelar</button>
+</div>
 
 
 
