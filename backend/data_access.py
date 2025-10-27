@@ -1,14 +1,28 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
 CORS(app)  # Permite conexiones desde tu frontend
 
-# 🔹 Conexión con MongoDB local (Compass)
-client = MongoClient("mongodb://localhost:27017/")
-db = client["instituto"]
+# # 🔹 Conexión con MongoDB local (Compass)
+# client = MongoClient("mongodb://localhost:27017/")
+# db = client["instituto"]
+# alumnos = db["alumnos"]
+
+usuario = os.getenv("lucaspaladini_db_user")
+contraseña = os.getenv("12345")
+cluster = "ac-p682d95-shard-00-00.ignfs1p.mongodb.net"  # tu cluster / host
+dbname = "instituto"
+
+uri = f"mongodb+srv://lucaspaladini_db_user:12345@pclucas0.ignfs1p.mongodb.net/"
+client = MongoClient(uri)
+
+db = client[dbname]
 alumnos = db["alumnos"]
+
+
 
 
 @app.route("/alumnos", methods=["GET"])
