@@ -148,7 +148,6 @@ async function agregarNotas() {
         const data = await res.json();
         alert(data.mensaje || "Notas agregadas correctamente");
         cerrarFormularioNotas();
-        buscarDni();
     } catch(err){
         console.error(err);
         alert("Error conectando con el servidor");

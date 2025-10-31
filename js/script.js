@@ -1,46 +1,51 @@
-function botonIngresarMenu() {
-    window.location.href = "pag/menu.html";
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Acá va la validación desp
-}
+    // --- LOGIN ADMIN ---
+    const formAdmin = document.getElementById("loginFormAdmin");
+    if (formAdmin) {
+        formAdmin.addEventListener("submit", async e => {
+            e.preventDefault();
+            const dni = document.getElementById("dniInputAdmin").value.trim();
+            const pass = document.getElementById("passInputAdmin").value.trim();
+            const errorMsg = document.getElementById("loginError");
 
-function buscarDni() {
-    let dniIngresado = document.getElementById("dniInput").value;
-    alert(dniIngresado);
-}
+            try {
+                const res = await fetch("http://localhost:5000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ dni, password: pass })
+                });
+                const data = await res.json();
 
-// Obtener todos los alumnos
-function cargarAlumnos() {
-    fetch("http://localhost:5000/alumnos")
-        .then(res => res.json())
-        .then(data => {
-            console.log("Alumnos:", data);
-            const lista = document.getElementById("lista-alumnos");
-            lista.innerHTML = "";
-            data.forEach(alumno => {
-                const li = document.createElement("li");
-                li.textContent = `${alumno.nombre} - ${alumno.curso}`;
-                lista.appendChild(li);
-            });
+                if (data.success) window.location.href = "../pag/menu.html";
+                else errorMsg.style.display = "block";
+            } catch {
+                alert("Error de conexión con el servidor");
+            }
         });
-}
+    }
 
-// Agregar un nuevo alumno
-function agregarAlumno() {
-    const nombre = document.getElementById("nombre").value;
-    const curso = document.getElementById("curso").value;
+    // --- LOGIN ALUMNO ---
+    const formAlumno = document.getElementById("loginFormAlumno");
+    if (formAlumno) {
+        formAlumno.addEventListener("submit", async e => {
+            e.preventDefault();
+            const dni = document.getElementById("dniInputAlumno").value.trim();
 
-    fetch("http://localhost:5000/alumnos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, curso })
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            cargarAlumnos(); // Actualiza la lista
+            if (!dni) return alert("Ingrese su DNI");
+
+            try {
+                const res = await fetch(`http://localhost:5000/alumnos/buscar?dni=${dni}`);
+                const data = await res.json();
+
+                if (data.length > 0)
+                    window.location.href = `pag/libreta.html?dni=${dni}`;
+                else
+                    alert("No se encontró el alumno");
+            } catch {
+                alert("Error de conexión con el servidor");
+            }
         });
-}
+    }
 
-// Llamar a cargarAlumnos al cargar la página
-window.onload = cargarAlumnos;
+});

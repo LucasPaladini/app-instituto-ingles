@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const res = await fetch("http://127.0.0.1:5000/alumnos");
             const alumnos = await res.json();
-
             tablaAlumnos.innerHTML = alumnos.length
                 ? alumnos.map(a => `
                     <tr>
@@ -18,33 +17,31 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${a.nombre}</td>
                         <td>${a.apellido || ""}</td>
                         <td>${a.curso}</td>
-                        <td>${a.email}</td>
+                        <td>${a.email || ""}</td>
                         <td>${a.direccion || ""}</td>
                         <td><button class="boton-eliminar" data-dni="${a.dni}">🗑️ Eliminar</button></td>
                         <td><button class="boton-modificar" data-dni="${a.dni}">✏️ Modificar</button></td>
                     </tr>`).join("")
                 : `<tr><td colspan="8">No hay alumnos cargados</td></tr>`;
 
-            document.querySelectorAll(".boton-eliminar").forEach(btn => {
+            tablaAlumnos.querySelectorAll(".boton-eliminar").forEach(btn =>
                 btn.onclick = async () => {
-                    const dni = btn.dataset.dni;
-                    if (confirm(`¿Eliminar al alumno con DNI ${dni}?`)) await eliminarAlumno(dni);
-                };
-            });
+                    if (confirm(`¿Eliminar al alumno con DNI ${btn.dataset.dni}?`))
+                        await eliminarAlumno(btn.dataset.dni);
+                }
+            );
 
-            document.querySelectorAll(".boton-modificar").forEach(btn => {
+            tablaAlumnos.querySelectorAll(".boton-modificar").forEach(btn =>
                 btn.onclick = () => {
                     const fila = btn.closest("tr");
-                    formModificar.querySelector("#mod-dni").value = fila.children[0].textContent;
-                    formModificar.querySelector("#mod-nombre").value = fila.children[1].textContent;
-                    formModificar.querySelector("#mod-apellido").value = fila.children[2].textContent;
-                    formModificar.querySelector("#mod-curso").value = fila.children[3].textContent;
-                    formModificar.querySelector("#mod-email").value = fila.children[4].textContent;
-                    formModificar.querySelector("#mod-direccion").value = fila.children[5].textContent;
+                    ["dni","nombre","apellido","curso","email","direccion"].forEach((id,i) => {
+                        const input = formModificar.querySelector(`#mod-${id}`);
+                        if(input) input.value = fila.children[i].textContent;
+                    });
                     formModificarContainer.style.display = "block";
                     formModificar.scrollIntoView({ behavior: "smooth" });
-                };
-            });
+                }
+            );
 
         } catch {
             tablaAlumnos.innerHTML = `<tr><td colspan="8">Error al cargar alumnos</td></tr>`;
@@ -58,52 +55,36 @@ document.addEventListener("DOMContentLoaded", () => {
         formAgregar.scrollIntoView({ behavior: "smooth" });
     });
 
-    document.getElementById("boton-cancelar-agregar").addEventListener("click", () => {
-        formAgregarContainer.style.display = "none";
-    });
-
-    document.getElementById("boton-cancelar-modificar").addEventListener("click", () => {
-        formModificarContainer.style.display = "none";
-    });
+    document.getElementById("boton-cancelar-agregar").onclick = () => formAgregarContainer.style.display = "none";
+    document.getElementById("boton-cancelar-modificar").onclick = () => formModificarContainer.style.display = "none";
 
     formAgregar.addEventListener("submit", async e => {
         e.preventDefault();
-        const alumno = {
-            dni: formAgregar.querySelector("#dni").value,
-            nombre: formAgregar.querySelector("#nombre").value,
-            apellido: formAgregar.querySelector("#apellido").value,
-            curso: formAgregar.querySelector("#curso").value,
-            email: formAgregar.querySelector("#email").value,
-            direccion: formAgregar.querySelector("#direccion").value
-        };
+        const alumno = Object.fromEntries(new FormData(formAgregar).entries());
         try {
             const res = await fetch("http://127.0.0.1:5000/alumnos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(alumno)
             });
+            const data = await res.json();
             if (res.ok) {
                 formAgregar.reset();
                 formAgregarContainer.style.display = "none";
                 cargarAlumnos();
             } else {
-                alert("Error al agregar alumno");
+                alert(data.error === "El DNI ya existe" ? "Ese DNI ya está registrado" : data.error || "Error al agregar alumno");
             }
         } catch {
-            alert("Error al agregar alumno");
+            alert("Error de conexión al agregar alumno");
         }
     });
 
     formModificar.addEventListener("submit", async e => {
         e.preventDefault();
         const dni = formModificar.querySelector("#mod-dni").value;
-        const alumno = {
-            nombre: formModificar.querySelector("#mod-nombre").value,
-            apellido: formModificar.querySelector("#mod-apellido").value,
-            curso: formModificar.querySelector("#mod-curso").value,
-            email: formModificar.querySelector("#mod-email").value,
-            direccion: formModificar.querySelector("#mod-direccion").value
-        };
+        const alumno = Object.fromEntries(new FormData(formModificar).entries());
+        delete alumno.mod_dni; // no enviamos el DNI
         try {
             const res = await fetch(`http://127.0.0.1:5000/alumnos/${dni}`, {
                 method: "PUT",
@@ -115,10 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 formModificarContainer.style.display = "none";
                 cargarAlumnos();
             } else {
-                alert("Error al modificar alumno");
+                const data = await res.json();
+                alert(data.error || "Error al modificar alumno");
             }
         } catch {
-            alert("Error al modificar alumno");
+            alert("Error de conexión al modificar alumno");
         }
     });
 
@@ -128,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (res.ok) cargarAlumnos();
             else alert("Error al eliminar alumno");
         } catch {
-            alert("Error al eliminar alumno");
+            alert("Error de conexión al eliminar alumno");
         }
     }
 });

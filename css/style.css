@@ -39,6 +39,17 @@ body table,
 
 /*login*/
 
+#loginError {
+    color: red;
+    display: none;
+    text-align: center;
+}
+
+.login-boton {
+    display: block;
+    margin-top: 15% !important;
+}
+
 .login-container {
     display: grid;
     place-items: center;
@@ -89,11 +100,8 @@ Header {
     overflow: hidden;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     border: 1px solid #ccc;
-    margin: 2% auto;         /* centrado horizontal */
+    margin: 2% auto;
 }
-
-
-
 
 /* Menu arriba de las paginas */
 
@@ -207,7 +215,7 @@ input, select, button {
 button {
     background: #3498db;
     color: white;
-    border: none;
+    border-color: #3498db;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -226,6 +234,14 @@ button:hover {
 .botones-formulario {
     display: flex;
     gap: 10px;
+}
+
+.botones-formulario .boton-cancelar-form {
+    background: orangered; !important;
+}
+
+.botones-formulario .boton-cancelar-form:hover {
+    background: red;
 }
 
 /* Tabla alumnos */
