@@ -66,6 +66,19 @@ body table,
   margin: 0 auto;
 }
 
+#loginFormAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dniInputAdmin,
+#passInputAdmin {
+    display: block !important;
+    margin: 10px auto !important;
+}
+
+
 /*login*/
 
 /* Header */
