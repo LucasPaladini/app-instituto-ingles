@@ -421,6 +421,19 @@ button:hover {
 /* Libreta */
 
 /* Libreta */
+
+.sin-notas {
+    color: #fff;
+    text-align: center;
+    margin: 4rem auto 0;
+    font-size: 1.2rem;
+    background:#3498db;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+
 .tabla-contenido-libreta {
     display: flex;
     flex-direction: column;

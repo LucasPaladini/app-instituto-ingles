@@ -49,3 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+//Login alumno
+
+function loginAlumno(event) {
+    event.preventDefault();
+    const dni = document.getElementById("dniInputAlumno").value.trim();
+    if (!dni) {
+        alert("Por favor ingrese su DNI");
+        return;
+    }
+
+    // Guarda el DNI en el almacenamiento local
+    localStorage.setItem("dniAlumno", dni);
+
+    // Redirige a la libreta
+    window.location.href = "pag/libreta.html";
+}

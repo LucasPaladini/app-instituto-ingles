@@ -33,13 +33,15 @@ function mostrarAlumno(alumno) {
             <tr>
                 <th>DNI</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>${alumno.dni}</td>
-                <td>${alumno.nombre} ${alumno.apellido}</td>
+                <td>${alumno.nombre}</td>
+                <td>${alumno.apellido}</td> 
                 <td>${alumno.email}</td>
             </tr>
         </tbody>
@@ -75,7 +77,7 @@ function mostrarAlumno(alumno) {
             </tbody>
         </table>`;
     } else {
-        html += "<p style='color:white;'>Sin notas</p>";
+        html += "<p class='sin-notas' >Sin notas</p>";
     }
 
     resultado.innerHTML = html;
@@ -153,3 +155,13 @@ async function agregarNotas() {
         alert("Error conectando con el servidor");
     }
 }
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const dniGuardado = localStorage.getItem("dniAlumno");
+    if (dniGuardado) {
+        const inputDni = document.getElementById("dniInput");
+        inputDni.value = dniGuardado;
+        buscarDni(); // Llama automáticamente a la función para mostrar al alumno
+    }
+});
