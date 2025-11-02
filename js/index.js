@@ -25,28 +25,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- LOGIN ALUMNO ---
+    // Login alumno
     const formAlumno = document.getElementById("loginFormAlumno");
     if (formAlumno) {
         formAlumno.addEventListener("submit", async e => {
             e.preventDefault();
             const dni = document.getElementById("dniInputAlumno").value.trim();
-
             if (!dni) return alert("Ingrese su DNI");
 
             try {
                 const res = await fetch(`http://localhost:5000/alumnos/buscar?dni=${dni}`);
                 const data = await res.json();
 
-                if (data.length > 0)
-                    window.location.href = `pag/libreta.html?dni=${dni}`;
-                else
+                if (data.length > 0) {
+                    localStorage.setItem("dniAlumno", dni);
+                    window.location.href = `pag/libreta.html`;
+                } else {
                     alert("No se encontró el alumno");
+                }
             } catch {
                 alert("Error de conexión con el servidor");
             }
         });
     }
+
 
 });
 

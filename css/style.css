@@ -78,6 +78,11 @@ body table,
     margin: 10px auto !important;
 }
 
+#dniInputAlumno {
+    width: 200px;
+    max-width: 100%;
+}
+
 
 /*login*/
 
@@ -340,7 +345,7 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 30%;
     max-width: 700px;
     max-height: 90vh;
     overflow-y: auto;
@@ -434,33 +439,37 @@ button:hover {
 }
 
 
+/* Libreta - Tabla y botones */
+
+
 .tabla-contenido-libreta {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(90deg,#2c3e50,#4a6073);
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
 }
 
 .tabla-contenido-libreta label {
-    color:#fff;
-    margin:0.5rem 0;
+    color: #fff;
+    margin: 0.5rem 0;
 }
 
 .tabla-contenido-libreta .tabla-alumnos {
     width: 100%;
-    max-width: 50%;
+    max-width: 60%;
     margin: 1rem auto;
     table-layout: fixed;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    background:white;
-    color:#333;
+    background: white;
+    color: #333;
     border-collapse: separate;
-    border-spacing:0;
+    border-spacing: 0;
 }
 
+/* Celdas */
 .tabla-contenido-libreta .tabla-alumnos th,
 .tabla-contenido-libreta .tabla-alumnos td {
     text-align: center;
@@ -468,42 +477,56 @@ button:hover {
     border: 1px solid #ccc;
 }
 
+/* Anchos de columnas */
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(1),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(1) { width: 5%; }    /* ID o Nº */
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(2),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(2) { width: 15%; }   /* Alumno */
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(3),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(3),
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(4),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(4),
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(5),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(5) {
-    width: 15%;
+    width: 5%;   /* Trimestres iguales */
 }
 
-.tabla-contenido-libreta button {
-    padding: 12px;
-    font-size: 1rem;
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(6),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(6) { width: 15%; }  /* Promedio o asignatura */
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(7),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(7),
+.tabla-contenido-libreta .tabla-alumnos th:nth-child(8),
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(8) {
+    width: 25%;   /* Acciones más ancha */
+}
+
+/* Botones */
+.tabla-contenido-libreta .boton-eliminar {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
     border-radius: 6px;
     cursor: pointer;
-    background:#3498db;
-    color:white;
-    border:none;
     transition: background 0.3s;
 }
 
-.tabla-contenido-libreta button:hover {
-    background:#2980b9;
+.tabla-contenido-libreta .boton-eliminar:hover { background: #9C1A1C; }
+
+.tabla-contenido-libreta .boton-modificar {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.tabla-contenido-libreta .agregar-modificar-alumno {
-    width: 90%;
-    max-width: 500px;
-    padding: 30px;
-    background:#2c3e50;
-    color:white;
-    border-radius:12px;
-    display:none;
-}
+.tabla-contenido-libreta .boton-modificar:hover { background: #2980b9; }
 
 
-
+/*Libreta*/
 
 /* Cursos */
 

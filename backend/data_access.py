@@ -103,25 +103,18 @@ def modificar_alumno(dni):
 
 
 @app.route("/alumnos/<dni>/notas", methods=["PUT"])
-def agregar_o_editar_notas(dni):
-    nueva_nota = request.get_json()
+def actualizar_notas(dni):
+    data = request.get_json()
+    notas = data.get("notas")
+    if notas is None:
+        return jsonify({"error": "Faltan notas"}), 400
+
     alumno = alumnos.find_one({"dni": dni})
     if not alumno:
         return jsonify({"error": "Alumno no encontrado"}), 404
 
-    notas = alumno.get("notas", [])
-
-    # Ver si ya hay notas para ese año
-    año_existente = next((n for n in notas if n["anio"] == nueva_nota["anio"]), None)
-    if año_existente:
-        # Actualizar curso y trimestres
-        año_existente["curso"] = nueva_nota.get("curso", año_existente.get("curso"))
-        año_existente["trimestres"].update(nueva_nota.get("trimestres", {}))
-    else:
-        notas.append(nueva_nota)
-
     alumnos.update_one({"dni": dni}, {"$set": {"notas": notas}})
-    return jsonify({"mensaje": "Notas agregadas o editadas correctamente"})
+    return jsonify({"mensaje": "Notas actualizadas correctamente"})
 
 
 

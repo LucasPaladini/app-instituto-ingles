@@ -16,7 +16,7 @@
     <div id="login">
         <h2 class="login-titulo">Ingrese DNI del alumno</h2>
         <form id="loginFormAlumno">
-            <input type="number" value="44021430"  id="dniInputAlumno" required placeholder="DNI">
+            <input type="number" id="dniInputAlumno" required min="10000000" max="99999999" placeholder="Ejemplo: 44021430">
             <button type="submit">Ver libreta</button>
             <button class="login-boton" type="button" onclick="window.location.href='pag/login-admin.html'">
                 Ingresar como Administrador
@@ -29,6 +29,6 @@
     <p>Desarrollado por Lucas Paladini &copy; SIFA.com 2025</p>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
