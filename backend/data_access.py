@@ -14,8 +14,6 @@ CORS(app)  # Permite conexiones desde tu frontend
 
 
 # 🔹 Conexión con MongoDB atlas (Atlas)
-usuario = os.getenv("lucaspaladini_db_user")
-contraseña = os.getenv("12345")
 dbname = "instituto"
 
 uri = f"mongodb+srv://lucaspaladini_db_user:12345@pclucas0.ignfs1p.mongodb.net/"
