@@ -605,7 +605,6 @@ tr {
 /* Responsivo */
 
 @media (max-width: 768px) {
-    /* Menú vertical en móvil */
     .menu-div {
         gap: 0.8rem;
     }
@@ -624,7 +623,7 @@ tr {
     }
 
     th, td {
-        font-size: 0.75rem;  /* letra más pequeña */
+        font-size: 0.75rem;
         padding: 6px 4px;
         white-space: nowrap;
         text-align: center;
@@ -632,7 +631,7 @@ tr {
 
     /* Tabla cursos */
     .tabla-cursos td {
-        font-size: 1.2rem;   /* un tamaño cómodo */
+        font-size: 1.2rem;
         padding: 10px 6px;
     }
 
@@ -646,7 +645,7 @@ tr {
 
     .tabla-alumnos {
         width: 100%;
-        min-width: 500px;    /* evita que se achique demasiado */
+        min-width: 500px;
         table-layout: auto;
     }
 
@@ -654,7 +653,7 @@ tr {
     /* Libreta */
 
     .consulta-dni input {
-        width: 30%;
+        width: 50%;
         font-size: 0.85rem;
         padding: 0.4rem;
     }
@@ -681,8 +680,8 @@ tr {
 
     /* Tabla de notas */
     .tabla-alumnos {
-        width: 90%;            /* ancho general */
-        table-layout: fixed;   /* respeta anchos fijos de columnas */
+        width: 90%;
+        table-layout: fixed;
         font-size: 0.75rem;
         border-collapse: collapse;
         margin: 0 auto;
@@ -691,7 +690,7 @@ tr {
     /* Celdas */
     .tabla-alumnos th,
     .tabla-alumnos td {
-        padding: 0.2rem 2px;   /* mínimo padding */
+        padding: 0.2rem 2px;
         text-align: center;
         border: 1px solid #ccc;
         white-space: nowrap;
@@ -702,13 +701,13 @@ tr {
     /* Primer columna (ID o Año) */
     .tabla-alumnos th:nth-child(1),
     .tabla-alumnos td:nth-child(1) {
-        width: 40px;   /* ajustable */
+        width: 40px;
     }
 
     /* Segunda columna (Curso) */
     .tabla-alumnos th:nth-child(2),
     .tabla-alumnos td:nth-child(2) {
-        width: 50px;       /* ajustable, modificá este valor para probar */
+        width: 50px;
         max-width: 50px;
         min-width: 50px;
     }
@@ -717,7 +716,7 @@ tr {
     .tabla-alumnos td:nth-child(2) select {
         width: 100%;
         box-sizing: border-box;
-        font-size: 0.7rem;  /* letra más chica para que entre */
+        font-size: 0.7rem;
         padding: 0;
         margin: 0;
     }
@@ -730,6 +729,42 @@ tr {
 
 
     /* Libreta */
+
+    .consulta-dni input {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .consulta-dni button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    /* Contenedor tabla con scroll horizontal */
+    #resultado {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .tabla-contenido-libreta .tabla-alumnos {
+        width: 100%;
+        min-width: 900px;
+        font-size: 0.75rem;
+        border-radius: 10px;
+    }
+
+    .tabla-alumnos th,
+    .tabla-alumnos td {
+        padding: 0.4rem 6px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
 
     /* Footer */

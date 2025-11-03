@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const botonCancelar = modalNotas.querySelector(".boton-cancelar-form");
     const botonGuardar = modalNotas.querySelector(".boton-guardar");
     const dniInput = document.getElementById("dniInput");
-    const rol = localStorage.getItem("rol"); // 'admin' o 'alumno'
+    const rol = localStorage.getItem("rol");
 
-    // 🔒 Ocultar botón de agregar notas si no es admin
-    if (rol !== "admin" && botonAgregarNotas) {
+
+    if (rol !== "admin") {
         botonAgregarNotas.style.display = "none";
     }
 
