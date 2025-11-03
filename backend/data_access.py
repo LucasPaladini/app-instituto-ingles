@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 import os
 
+
 app = Flask(__name__)
 CORS(app)  # Permite conexiones desde tu frontend
 
@@ -43,7 +44,6 @@ def login():
         return jsonify({"success": False}), 401
 
 
-
 @app.route("/alumnos", methods=["GET"])
 def obtener_alumnos():
     curso = request.args.get("curso")
@@ -78,8 +78,6 @@ def agregar_alumno():
     except DuplicateKeyError:
         return jsonify({"error": "El DNI ya existe"}), 400
 
-
-
 @app.route('/alumnos/<dni>', methods=['DELETE'])
 def eliminar_alumno(dni):
     from flask import jsonify
@@ -113,7 +111,6 @@ def actualizar_notas(dni):
 
     alumnos.update_one({"dni": dni}, {"$set": {"notas": notas}})
     return jsonify({"mensaje": "Notas actualizadas correctamente"})
-
 
 
 if __name__ == "__main__":

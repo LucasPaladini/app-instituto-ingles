@@ -1,19 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos</title>
     <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body class="body-cursos">
 
+<!-- Menú -->
 <div class="menu-div">
-    <div class="menu-div">
-        <div><a href="../index.html">Login</a></div>
-        <div><a href="alumnos.html">Alumnos</a></div>
-        <div class="pagina-ingresada"><a href="cursos.html">Cursos</a></div>
-        <div><a href="libreta.html">Libreta</a></div>
-    </div>
+    <div><a href="../index.html">Login</a></div>
+    <div><a href="alumnos.html">Alumnos</a></div>
+    <div class="pagina-ingresada"><a href="cursos.html">Cursos</a></div>
+    <div><a href="libreta.html">Libreta</a></div>
 </div>
 
 <header>
@@ -32,23 +33,25 @@
     </table>
 </div>
 
-<!-- Tabla de alumnos -->
+<!-- Tabla de alumnos con contenedor para scroll -->
 <div class="cursos-contenido">
-    <table class="tabla-alumnos" style="display: none;">
-        <thead>
-        <tr>
-            <th>DNI</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Curso</th>
-            <th>Email</th>
-            <th>Dirección</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Se llenará automáticamente al hacer clic -->
-        </tbody>
-    </table>
+    <div class="tabla-alumnos-container" style="display: none;">
+        <table class="tabla-alumnos">
+            <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Curso</th>
+                <th>Email</th>
+                <th>Dirección</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Se llenará automáticamente al hacer clic -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <footer>

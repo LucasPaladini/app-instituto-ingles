@@ -273,6 +273,7 @@ button:hover {
 }
 
 .tabla-alumnos {
+    width: 100%;
     background: white;
     color: #333;
     border-radius: 20px;
@@ -284,6 +285,13 @@ button:hover {
     table-layout: fixed;
 }
 
+.tabla-alumnos th,
+.tabla-alumnos td {
+    overflow: hidden;        /* corta contenido que sobra */
+    text-overflow: ellipsis; /* agrega "..." si el texto es largo */
+    white-space: nowrap;     /* evita que se rompa en varias líneas */
+}
+
 .tabla-alumnos th:nth-child(1),
 .tabla-alumnos td:nth-child(1) {
     width: 5%;
@@ -291,12 +299,12 @@ button:hover {
 
 .tabla-alumnos th:nth-child(2),
 .tabla-alumnos td:nth-child(2) {
-    width: 15%;
+    width: 5%;
 }
 
 .tabla-alumnos th:nth-child(3),
 .tabla-alumnos td:nth-child(3) {
-    width: 15%;
+    width: 5%;   /* si querés que Apellido también sea corta */
 }
 
 .tabla-alumnos th:nth-child(4),
@@ -596,44 +604,140 @@ tr {
 
 /* Responsivo */
 
-@media (max-width: 1024px) {
-    .menu-div {
-        gap: 4rem;
-    }
-}
-
 @media (max-width: 768px) {
+    /* Menú vertical en móvil */
     .menu-div {
-        flex-direction: column;
-        gap: 1.5rem;
+        gap: 0.8rem;
     }
 
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 1rem;
-    }
-
+    /* Contenedores generales */
     .container,
     .contenedor-menu {
         flex-direction: column;
         align-items: center;
     }
 
-    table, th, td {
-        font-size: 0.9rem;
-        padding: 6px;
+    /* Tablas generales */
+    table {
+        width: 100%;
+        border-collapse: collapse;
     }
 
+    th, td {
+        font-size: 0.75rem;  /* letra más pequeña */
+        padding: 6px 4px;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* Tabla cursos */
     .tabla-cursos td {
-        font-size: 1.3rem;
+        font-size: 1.2rem;   /* un tamaño cómodo */
+        padding: 10px 6px;
     }
 
+    /* Tabla alumnos con scroll horizontal */
+    .tabla-contenido,
+    .tabla-alumnos-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabla-alumnos {
+        width: 100%;
+        min-width: 500px;    /* evita que se achique demasiado */
+        table-layout: auto;
+    }
+
+
+    /* Libreta */
+
+    .consulta-dni input {
+        width: 30%;
+        font-size: 0.85rem;
+        padding: 0.4rem;
+    }
+
+    .consulta-dni {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .consulta-dni button {
+        text-align: center;
+    }
+
+
+    /* Contenedor scrollable */
+    #resultado {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 1rem;
+    }
+
+    /* Tabla de notas */
+    .tabla-alumnos {
+        width: 90%;            /* ancho general */
+        table-layout: fixed;   /* respeta anchos fijos de columnas */
+        font-size: 0.75rem;
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+
+    /* Celdas */
+    .tabla-alumnos th,
+    .tabla-alumnos td {
+        padding: 0.2rem 2px;   /* mínimo padding */
+        text-align: center;
+        border: 1px solid #ccc;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Primer columna (ID o Año) */
+    .tabla-alumnos th:nth-child(1),
+    .tabla-alumnos td:nth-child(1) {
+        width: 40px;   /* ajustable */
+    }
+
+    /* Segunda columna (Curso) */
+    .tabla-alumnos th:nth-child(2),
+    .tabla-alumnos td:nth-child(2) {
+        width: 50px;       /* ajustable, modificá este valor para probar */
+        max-width: 50px;
+        min-width: 50px;
+    }
+
+    /* Forzar que el select no agrande la celda */
+    .tabla-alumnos td:nth-child(2) select {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.7rem;  /* letra más chica para que entre */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Modal de agregar notas */
+    .agregar-modificar-alumno {
+        width: 95%;
+        padding: 10px;
+    }
+
+
+    /* Libreta */
+
+
+    /* Footer */
     footer {
         position: relative;
         height: auto;
     }
 }
+
 
 /* Responsivo */

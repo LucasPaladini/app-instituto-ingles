@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function buscarDni(dni) {
         try {
-            const res = await fetch(`http://localhost:5000/alumnos/buscar?dni=${dni}`);
+            const res = await fetch(`http://192.168.1.30:5000/alumnos/buscar?dni=${dni}`);
             const data = await res.json();
 
             if (data.length === 0) {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alumnoActual.notas.splice(idx, 1);
 
         try {
-            await fetch(`http://localhost:5000/alumnos/${alumnoActual.dni}/notas`, {
+            await fetch(`http://192.168.1.30:5000/alumnos/${alumnoActual.dni}/notas`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ notas: alumnoActual.notas })
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            await fetch(`http://localhost:5000/alumnos/${alumnoActual.dni}/notas`, {
+            await fetch(`http://192.168.1.30:5000/alumnos/${alumnoActual.dni}/notas`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ notas: alumnoActual.notas })

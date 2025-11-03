@@ -1,22 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
     const filas = document.querySelectorAll(".tabla-cursos tbody tr");
+    const contenedor = document.querySelector(".tabla-alumnos-container"); // Contenedor
     const tabla = document.querySelector(".tabla-alumnos");
     const cuerpo = tabla.querySelector("tbody");
 
-    tabla.style.display = "none";
-
     filas.forEach(fila => {
         fila.addEventListener("click", async () => {
+            // Resaltar fila seleccionada
             filas.forEach(f => f.classList.remove("selected"));
             fila.classList.add("selected");
 
             const nombreCurso = fila.children[0].innerText;
 
             try {
-                const res = await fetch(`http://127.0.0.1:5000/alumnos?curso=${nombreCurso}`);
+                const res = await fetch(`http://192.168.1.30:5000/alumnos?curso=${nombreCurso}`);
                 const alumnos = await res.json();
 
-                tabla.style.display = "table";
+                // Mostrar el contenedor
+                contenedor.style.display = "block";
+
                 cuerpo.innerHTML = alumnos.length
                     ? alumnos.map(a => `
                         <tr>
@@ -30,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       `).join("")
                     : `<tr><td colspan="6">No hay alumnos en este curso</td></tr>`;
             } catch {
+                contenedor.style.display = "block";
                 cuerpo.innerHTML = `<tr><td colspan="6">Error al cargar alumnos</td></tr>`;
-                tabla.style.display = "table";
             }
         });
     });
