@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function cargarAlumnos() {
         try {
-            const res = await fetch("http://192.168.1.30:5000/alumnos");
+            const res = await fetch("http://10.0.1.154:5000/alumnos");
             const alumnos = await res.json();
             tablaAlumnos.innerHTML = alumnos.length
                 ? alumnos.map(a => `
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         const alumno = Object.fromEntries(new FormData(formAgregar).entries());
         try {
-            const res = await fetch(`http://192.168.1.30:5000/alumnos`, {
+            const res = await fetch(`http://10.0.1.154:5000/alumnos`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(alumno)
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const alumno = Object.fromEntries(new FormData(formModificar).entries());
         delete alumno.mod_dni; // no enviamos el DNI
         try {
-            const res = await fetch(`http://192.168.1.30:5000/alumnos/${dni}`, {
+            const res = await fetch(`http://10.0.1.154:5000/alumnos/${dni}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(alumno)
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function eliminarAlumno(dni) {
         try {
-            const res = await fetch(`http://192.168.1.30:5000/alumnos/${dni}`, { method: "DELETE" });
+            const res = await fetch(`http://10.0.1.154:5000/alumnos/${dni}`, { method: "DELETE" });
             if (res.ok) cargarAlumnos();
             else alert("Error al eliminar alumno");
         } catch {

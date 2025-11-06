@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- LOGIN ADMIN ---
+    // login admin
     const formAdmin = document.getElementById("loginFormAdmin");
     if (formAdmin) {
         formAdmin.addEventListener("submit", async e => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const errorMsg = document.getElementById("loginError");
 
             try {
-                const res = await fetch("http://192.168.1.30:5000/login", {
+                const res = await fetch("http://10.0.1.154:5000/login", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({dni, password: pass})

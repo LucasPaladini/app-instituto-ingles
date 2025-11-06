@@ -54,7 +54,7 @@ body table,
 .login-container {
     display: grid;
     place-items: center;
-    margin-top: 10rem;
+    margin: auto;
 }
 
 .login-titulo {
@@ -111,8 +111,8 @@ Header {
 }
 
 .contenedor-menu {
-    width: 80%;              /* ancho mayor */
-    max-width: 1000px;       /* opcional, para no crecer demasiado en pantallas grandes */
+    width: 80%;
+    max-width: 1000px;
     display: flex;
     background: white;
     border-radius: 10px;
@@ -122,14 +122,12 @@ Header {
     margin: 2% auto;
 }
 
-/* Menu arriba de las paginas */
-
 /* Menu arriba de las páginas */
 .menu-div {
     display: flex;
-    justify-content: center; /* centra el contenedor completo */
+    justify-content: center;
     align-items: center;
-    gap: 4rem;               /* espacio entre los links */
+    gap: 4rem;
     padding: 1rem 0;
     background: #2c3e50;
     box-sizing: border-box;
@@ -161,13 +159,12 @@ Header {
 }
 
 /* Menu arriba de las paginas */
-
 /* Sidebar */
 
 .sidebar {
     width: 200px;
     background: linear-gradient(90deg, #2c3e50, #4a6073);
-    padding: 1rem 0;          /* menos padding lateral */
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,21 +174,21 @@ Header {
 .sidebar ul {
     list-style: none;
     padding: 0;
-    width: 100%;              /* que la lista ocupe todo el ancho */
+    width: 100%;
 }
 
 .sidebar li {
     margin: 0.5rem 0;
-    width: 100%;              /* que cada item ocupe todo el ancho */
+    width: 100%;
 }
 
 .sidebar a {
     color: white;
     text-decoration: none;
     display: block;
-    width: 100%;              /* ancho completo */
-    text-align: center;       /* centrado horizontal */
-    padding: 10px 0;          /* padding vertical solo */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
     border-radius: 6px;
     transition: background 0.3s;
 }
@@ -287,9 +284,9 @@ button:hover {
 
 .tabla-alumnos th,
 .tabla-alumnos td {
-    overflow: hidden;        /* corta contenido que sobra */
-    text-overflow: ellipsis; /* agrega "..." si el texto es largo */
-    white-space: nowrap;     /* evita que se rompa en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tabla-alumnos th:nth-child(1),
@@ -304,7 +301,7 @@ button:hover {
 
 .tabla-alumnos th:nth-child(3),
 .tabla-alumnos td:nth-child(3) {
-    width: 5%;   /* si querés que Apellido también sea corta */
+    width: 5%;
 }
 
 .tabla-alumnos th:nth-child(4),
@@ -415,7 +412,6 @@ button:hover {
 
 
 
-/* libreta */
 
 /* Libreta - Estilos esenciales */
 .tabla-contenido-libreta {
@@ -431,11 +427,6 @@ button:hover {
     margin: 0.5rem 0;
 }
 
-
-/* Libreta */
-
-/* Libreta */
-
 .sin-notas {
     color: #fff;
     text-align: center;
@@ -446,10 +437,6 @@ button:hover {
     border-radius: 10px;
     width: fit-content;
 }
-
-
-/* Libreta - Tabla y botones */
-
 
 .tabla-contenido-libreta {
     display: flex;
@@ -466,7 +453,7 @@ button:hover {
 
 .tabla-contenido-libreta .tabla-alumnos {
     width: 100%;
-    max-width: 60%;
+    max-width: 80%;
     margin: 1rem auto;
     table-layout: fixed;
     border-radius: 12px;
@@ -488,25 +475,25 @@ button:hover {
 
 /* Anchos de columnas */
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(1),
-.tabla-contenido-libreta .tabla-alumnos td:nth-child(1) { width: 5%; }    /* ID o Nº */
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(1) { width: 5%; }
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(2),
-.tabla-contenido-libreta .tabla-alumnos td:nth-child(2) { width: 15%; }   /* Alumno */
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(2) { width: 15%; }
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(3),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(3),
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(4),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(4),
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(5),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(5) {
-    width: 5%;   /* Trimestres iguales */
+    width: 5%;
 }
 
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(6),
-.tabla-contenido-libreta .tabla-alumnos td:nth-child(6) { width: 15%; }  /* Promedio o asignatura */
+.tabla-contenido-libreta .tabla-alumnos td:nth-child(6) { width: 15%; }
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(7),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(7),
 .tabla-contenido-libreta .tabla-alumnos th:nth-child(8),
 .tabla-contenido-libreta .tabla-alumnos td:nth-child(8) {
-    width: 25%;   /* Acciones más ancha */
+    width: 35%;
 }
 
 /* Botones */
@@ -599,6 +586,18 @@ footer {
 tr {
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

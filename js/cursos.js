@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const nombreCurso = fila.children[0].innerText;
 
             try {
-                const res = await fetch(`http://192.168.1.30:5000/alumnos?curso=${nombreCurso}`);
+                const res = await fetch(`http://10.0.1.154:5000/alumnos?curso=${nombreCurso}`);
                 const alumnos = await res.json();
 
                 // Mostrar el contenedor
