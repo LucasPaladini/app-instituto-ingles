@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // Login alumno
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!dni) return alert("Ingrese su DNI");
 
             try {
-                const res = await fetch(`http://10.0.1.154:5000/alumnos/buscar?dni=${dni}`);
+                const res = await fetch(`${api_url}/alumnos/buscar?dni=${dni}`);
                 const data = await res.json();
 
                 if (data.length > 0) {

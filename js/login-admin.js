@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // login admin
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const errorMsg = document.getElementById("loginError");
 
             try {
-                const res = await fetch("http://10.0.1.154:5000/login", {
+                const res = await fetch(`${api_url}/login`, {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({dni, password: pass})
