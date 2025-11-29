@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alumnoActual.notas.splice(idx, 1);
 
         try {
-            await fetch(`${api_url}alumnos/${alumnoActual.dni}/notas`, {
+            await fetch(`${api_url}/alumnos/${alumnoActual.dni}/notas`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ notas: alumnoActual.notas })
