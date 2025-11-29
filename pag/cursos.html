@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos</title>
-    <link rel="stylesheet" href="./css/style.css">
-
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="body-cursos">
 
@@ -21,21 +20,30 @@
     <h1>Listado de cursos</h1>
 </header>
 
+<!-- Formulario para crear curso -->
+<div class="form-curso">
+    <input type="text" id="nombreCurso" placeholder="Nombre del curso">
+    <button id="crearCurso">Crear</button>
+</div>
+
 <!-- Tabla de cursos -->
 <div class="cursos-contenido-titulos">
     <table class="tabla-cursos">
+        <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
         <tbody>
-        <tr><td>Kinder</td></tr>
-        <tr><td>Preparatorio</td></tr>
-        <tr><td>Kids</td></tr>
-        <tr><td>Libre</td></tr>
+        <!-- Se llenará dinámicamente desde JS -->
         </tbody>
     </table>
 </div>
 
-<!-- Tabla de alumnos con contenedor para scroll -->
+<!-- Tabla de alumnos -->
 <div class="cursos-contenido">
-    <div class="tabla-alumnos-container" style="display: none;">
+    <div class="tabla-alumnos-container" style="display:none;">
         <table class="tabla-alumnos">
             <thead>
             <tr>
@@ -48,7 +56,7 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Se llenará automáticamente al hacer clic -->
+            <!-- Se llenará automáticamente al seleccionar un curso -->
             </tbody>
         </table>
     </div>

@@ -105,5 +105,40 @@ def actualizar_notas(dni):
     return jsonify({"mensaje": "Notas actualizadas correctamente"})
 
 
+# Cursitos
+
+cursos = db["cursos"]
+
+# GET todos los cursos
+@app.route("/cursos", methods=["GET"])
+def get_cursos():
+    return jsonify(list(cursos.find({}, {"_id": 0})))
+
+# POST crear curso
+@app.route("/cursos", methods=["POST"])
+def post_curso():
+    nombre = request.json.get("nombre")
+    if not nombre or cursos.find_one({"nombre": nombre}):
+        return jsonify({"error": "Nombre inválido o ya existe"}), 400
+    cursos.insert_one({"nombre": nombre})
+    return jsonify({"mensaje": "Curso creado"})
+
+# PUT modificar curso
+@app.route("/cursos/<nombre>", methods=["PUT"])
+def put_curso(nombre):
+    nuevo = request.json.get("nombre")
+    if not nuevo or cursos.find_one({"nombre": nuevo}):
+        return jsonify({"error": "Nombre inválido o ya existe"}), 400
+    res = cursos.update_one({"nombre": nombre}, {"$set": {"nombre": nuevo}})
+    return jsonify({"mensaje": "Curso modificado"} if res.matched_count else {"error": "No encontrado"}), 200
+
+# DELETE curso
+@app.route("/cursos/<nombre>", methods=["DELETE"])
+def delete_curso(nombre):
+    res = cursos.delete_one({"nombre": nombre})
+    return jsonify({"mensaje": "Curso eliminado"} if res.deleted_count else {"error": "No encontrado"}), 200
+
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
