@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             tr.innerHTML = `
                 <td>${c.nombre}</td>
                 <td>
-                    <button class="btn-modificar">✏️</button>
-                    <button class="btn-eliminar">🗑️</button>
+                    <button class="btn-modificar">✏️ PERONISTA</button>
+                    <button class="btn-eliminar">🗑️ ELIMINAR </button>
                 </td>
             `;
 
