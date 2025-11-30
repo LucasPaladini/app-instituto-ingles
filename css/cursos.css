@@ -1,4 +1,11 @@
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
+}
+
 .cursos-contenido-titulos {
     display: flex;
     justify-content: center; /* centra horizontalmente */
@@ -47,4 +54,16 @@
 .tabla-cursos td:nth-child(2),
 .tabla-cursos td:nth-child(3) {
     text-align: center;
+}
+
+/* Hover sobre las filas de cursos */
+.tabla-cursos tbody tr:hover {
+    background-color: rgba(26, 188, 156, 0.2);
+    cursor: pointer;
+}
+
+/* Fila seleccionada */
+.tabla-cursos tbody tr.selected {
+    background-color: rgba(26, 188, 156, 0.5);
+    font-weight: bold;
 }

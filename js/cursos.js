@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tbodyCursos = document.querySelector(".tabla-cursos tbody");
+    const contenedorAlumnos = document.querySelector(".tabla-alumnos-container");
+    const cuerpoAlumnos = document.querySelector(".tabla-alumnos tbody");
     const inputCurso = document.getElementById("nombreCurso");
     const btnCrear = document.getElementById("crearCurso");
 
@@ -28,6 +30,39 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".boton-modificar").forEach(btn =>
             btn.onclick = () => modificarCurso(btn.dataset.nombre)
         );
+
+        // Asignar click a fila para mostrar alumnos
+        tbodyCursos.querySelectorAll("tr").forEach(fila => {
+            fila.onclick = async (e) => {
+                // Evitar que click en botón active la fila
+                if (e.target.tagName === "BUTTON") return;
+
+                const nombreCurso = fila.dataset.nombre;
+
+                // Resaltar fila seleccionada
+                tbodyCursos.querySelectorAll("tr").forEach(f => f.classList.remove("selected"));
+                fila.classList.add("selected");
+
+                // Traer alumnos
+                const alumnos = await (await fetch(`${api_url}/alumnos?curso=${encodeURIComponent(nombreCurso)}`)).json();
+                contenedorAlumnos.style.display = "block";
+
+                cuerpoAlumnos.innerHTML = alumnos.length
+                    ? alumnos.map(a => `
+                        <tr>
+                            <td>${a.dni}</td>
+                            <td>${a.nombre}</td>
+                            <td>${a.apellido || ""}</td>
+                            <td>${a.curso}</td>
+                            <td>${a.email || ""}</td>
+                            <td>${a.direccion || ""}</td>
+                        </tr>`).join("")
+                    : `<tr><td colspan="6">No hay alumnos en este curso</td></tr>`;
+            };
+        });
+
+        // Ocultar alumnos si no hay cursos
+        if (!cursos.length) contenedorAlumnos.style.display = "none";
     }
 
     // -----------------------------------
@@ -69,5 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cargarCursos();
     }
 
+    // Carga inicial
     cargarCursos();
 });
