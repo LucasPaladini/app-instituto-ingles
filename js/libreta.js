@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const botonCancelar = modalNotas.querySelector(".boton-cancelar-form");
     const botonGuardar = modalNotas.querySelector(".boton-guardar");
     const dniInput = document.getElementById("dniInput");
+    const cursoSelect = document.getElementById("cursoNota");
     const rol = localStorage.getItem("rol");
-
 
     if (rol !== "admin") {
         botonAgregarNotas.style.display = "none";
@@ -21,14 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
         dniInput.value = dniAlumno;
         buscarDni(dniAlumno);
     }
-    localStorage.clear()
+    localStorage.clear();
 
     // Mostrar modal
     if (botonAgregarNotas) {
-        botonAgregarNotas.addEventListener("click", () => {
+        botonAgregarNotas.addEventListener("click", async () => {
             if (!alumnoActual) return alert("Primero consulte un alumno");
             notaEdit = null;
             limpiarFormularioNotas();
+
+            // 🔹 Cargar cursos dinámicamente
+            await cargarCursos();
+
             modalNotas.style.display = "block";
         });
     }
@@ -45,6 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!dni) return alert("Ingrese un DNI");
         buscarDni(dni);
     });
+
+    // ---------------- FUNCIONES ----------------
+
+    async function cargarCursos() {
+        try {
+            const res = await fetch(`${api_url}/cursos`);
+            const cursos = await res.json();
+
+            // Limpiar opciones previas
+            cursoSelect.innerHTML = `<option value="">Seleccione un curso</option>`;
+
+            cursos.forEach(c => {
+                const option = document.createElement("option");
+                option.value = c.nombre;
+                option.textContent = c.nombre;
+                cursoSelect.appendChild(option);
+            });
+        } catch (err) {
+            console.error("Error cargando cursos:", err);
+            alert("No se pudieron cargar los cursos");
+        }
+    }
 
     async function buscarDni(dni) {
         try {
@@ -67,11 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mostrarAlumno() {
         if (!alumnoActual.notas) alumnoActual.notas = [];
-        alumnoActual.notas.sort((a, b) => {
-            if (a.anio > b.anio) return -1;
-            if (a.anio < b.anio) return 1;
-            return 0;
-        });
+        alumnoActual.notas.sort((a, b) => b.anio - a.anio);
 
         let html = `<table class="tabla-alumnos">
         <thead>
@@ -103,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         resultado.innerHTML = html;
 
-        // Asignar eventos solo si es admin
         if (rol === "admin") {
             resultado.querySelectorAll(".boton-modificar").forEach(btn =>
                 btn.addEventListener("click", () => editarNota(btn.dataset.idx))
@@ -168,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (anio < 2015 || anio > 2099)
             return alert("El año no puede ser menor a 2015 ni mayor a 2099");
 
-        if (!notaEdit && alumnoActual.notas.find(n => n.anio === anio)) {
+        if (notaEdit === null && alumnoActual.notas.find(n => n.anio === anio)) {
             return alert(`Ya existe una nota para el año ${anio}`);
         }
 
