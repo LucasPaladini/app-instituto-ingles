@@ -23,9 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         selects.forEach(sel => {
             sel.innerHTML = `<option value="">Seleccione un curso</option>`;
-            cursosCache.forEach(c =>
-                sel.innerHTML += `<option value="${c.nombre}">${c.nombre}</option>`
-            );
+            cursosCache.forEach(c => {
+                const option = document.createElement("option");
+                option.value = c.nombre.trim(); // trim para evitar espacios
+                option.textContent = c.nombre;
+                sel.appendChild(option);
+            });
         });
     }
 
@@ -69,16 +72,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // 🔹 Mostrar form Modificar
     // -----------------------------------
     async function mostrarFormModificar(dni) {
-        await cargarCursos();
-
-        const res = await fetch(`${api_url}/alumnos?dni=${dni}`);
+        // Traer datos del alumno usando la ruta correcta
+        const res = await fetch(`${api_url}/alumnos/buscar?dni=${dni}`);
         const alumno = (await res.json())[0];
         if (!alumno) return;
 
-        Object.entries(alumno).forEach(([key, val]) => {
-            const inp = formMod.querySelector(`#mod-${key}`);
-            if (inp) inp.value = val;
-        });
+        // Rellenar los campos
+        document.getElementById("mod-dni").value = alumno.dni;
+        document.getElementById("mod-nombre").value = alumno.nombre;
+        document.getElementById("mod-apellido").value = alumno.apellido || "";
+        document.getElementById("mod-email").value = alumno.email || "";
+        document.getElementById("mod-direccion").value = alumno.direccion || "";
+
+        // Primero cargar los cursos en el select
+        await cargarCursos();
+
+        // Seleccionar automáticamente el curso del alumno
+        const selectCurso = document.getElementById("mod-curso");
+        let encontrado = false;
+        for (let opt of selectCurso.options) {
+            if (opt.value.trim() === (alumno.curso || "").trim()) {
+                opt.selected = true;
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) selectCurso.selectedIndex = 0;
 
         contMod.style.display = "block";
         formMod.scrollIntoView({ behavior: "smooth" });
