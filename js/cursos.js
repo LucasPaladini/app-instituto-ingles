@@ -1,38 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tbodyCursos = document.querySelector(".tabla-cursos tbody");
-    const contenedorAlumnos = document.querySelector(".tabla-alumnos-container");
-    const cuerpoAlumnos = document.querySelector(".tabla-alumnos tbody");
     const inputCurso = document.getElementById("nombreCurso");
     const btnCrear = document.getElementById("crearCurso");
 
-    // Función que carga todos los cursos
+    // -----------------------------------
+    // 🔹 Cargar cursos
+    // -----------------------------------
     async function cargarCursos() {
         const res = await fetch(`${api_url}/cursos`);
         const cursos = await res.json();
 
-        // Limpiar tbody antes de agregar filas
-        tbodyCursos.innerHTML = "";
+        tbodyCursos.innerHTML = cursos.length
+            ? cursos.map(c => `
+                <tr data-nombre="${c.nombre}">
+                    <td>${c.nombre}</td>
+                    <td><button class="boton-modificar" data-nombre="${c.nombre}">✏️ Modificar</button></td>
+                    <td><button class="boton-eliminar" data-nombre="${c.nombre}">🗑 Eliminar</button></td>
+                </tr>`).join("")
+            : `<tr><td colspan="3">No hay cursos cargados</td></tr>`;
 
-        cursos.forEach(c => {
-            const tr = document.createElement("tr");
-            tr.dataset.nombre = c.nombre;
+        // Botones eliminar
+        document.querySelectorAll(".boton-eliminar").forEach(btn =>
+            btn.onclick = () => eliminarCurso(btn.dataset.nombre)
+        );
 
-            tr.innerHTML = `
-                <td>${c.nombre}</td>
-                <td>
-                    <button class="btn-modificar">✏️ PERONISTA</button>
-                    <button class="btn-eliminar">🗑️ ELIMINAR </button>
-                </td>
-            `;
-
-            tbodyCursos.appendChild(tr);
-        });
-
-        // Ocultar alumnos mientras se cargan los cursos
-        contenedorAlumnos.style.display = "none";
+        // Botones modificar
+        document.querySelectorAll(".boton-modificar").forEach(btn =>
+            btn.onclick = () => modificarCurso(btn.dataset.nombre)
+        );
     }
 
-    // Crear curso
+    // -----------------------------------
+    // 🔹 Crear curso
+    // -----------------------------------
     btnCrear.addEventListener("click", async () => {
         const nombre = inputCurso.value.trim();
         if (!nombre) return alert("Ingrese un nombre");
@@ -49,54 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
         cargarCursos();
     });
 
-    // Manejo de clicks dentro de la tabla
-    tbodyCursos.addEventListener("click", async (e) => {
-        const fila = e.target.closest("tr");
-        if (!fila) return;
+    // -----------------------------------
+    // 🔹 Funciones modificar/eliminar
+    // -----------------------------------
+    async function eliminarCurso(nombre) {
+        if (!confirm(`Eliminar curso "${nombre}"?`)) return;
+        await fetch(`${api_url}/cursos/${encodeURIComponent(nombre)}`, { method: "DELETE" });
+        cargarCursos();
+    }
 
-        const nombreCurso = fila.dataset.nombre;
+    async function modificarCurso(nombre) {
+        const nuevo = prompt("Nuevo nombre:", nombre);
+        if (!nuevo) return;
+        await fetch(`${api_url}/cursos/${encodeURIComponent(nombre)}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre: nuevo })
+        });
+        cargarCursos();
+    }
 
-        // Eliminar curso
-        if (e.target.classList.contains("btn-eliminar")) {
-            if (!confirm(`Eliminar curso "${nombreCurso}"?`)) return;
-            await fetch(`${api_url}/cursos/${encodeURIComponent(nombreCurso)}`, { method: "DELETE" });
-            cargarCursos();
-            return;
-        }
-
-        // Modificar curso
-        if (e.target.classList.contains("btn-modificar")) {
-            const nuevo = prompt("Nuevo nombre:", nombreCurso);
-            if (!nuevo) return;
-            await fetch(`${api_url}/cursos/${encodeURIComponent(nombreCurso)}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nombre: nuevo })
-            });
-            cargarCursos();
-            return;
-        }
-
-        // Mostrar alumnos del curso
-        tbodyCursos.querySelectorAll("tr").forEach(f => f.classList.remove("selected"));
-        fila.classList.add("selected");
-
-        const alumnos = await (await fetch(`${api_url}/alumnos?curso=${encodeURIComponent(nombreCurso)}`)).json();
-        contenedorAlumnos.style.display = "block";
-
-        cuerpoAlumnos.innerHTML = alumnos.length
-            ? alumnos.map(a => `
-                <tr>
-                    <td>${a.dni}</td>
-                    <td>${a.nombre}</td>
-                    <td>${a.apellido || ""}</td>
-                    <td>${a.curso}</td>
-                    <td>${a.email || ""}</td>
-                    <td>${a.direccion || ""}</td>
-                </tr>`).join("")
-            : `<tr><td colspan="6">No hay alumnos en este curso</td></tr>`;
-    });
-
-    // Carga inicial
     cargarCursos();
 });

@@ -1,0 +1,50 @@
+
+.cursos-contenido-titulos {
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    margin: 20px 0; /* opcional, para separar del resto */
+    width: 100%;
+}
+
+.cursos-contenido-titulos table {
+    width: 60%; /* o el ancho que quieras */
+    border-collapse: collapse;
+}
+
+.form-curso {
+    text-align: center;
+}
+
+.tabla-cursos th:nth-child(2),
+.tabla-cursos th:nth-child(3),
+.tabla-cursos td:nth-child(2),
+.tabla-cursos td:nth-child(3) {
+    width: 15%;
+}
+
+/* Contenedor tabla de títulos */
+.cursos-contenido-titulos {
+    display: flex;
+    justify-content: center; /* centra la tabla horizontalmente */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.cursos-contenido-titulos table {
+    width: 60%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.tabla-cursos td:first-child {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0.5rem 0;
+}
+
+/* Celdas de acciones */
+.tabla-cursos td:nth-child(2),
+.tabla-cursos td:nth-child(3) {
+    text-align: center;
+}
