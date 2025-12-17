@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
+<!-- Menú -->
+<div class="menu-div">
+    <div><a href="../index.html">Login</a></div>
+    <div><a href="alumnos.html">Alumnos</a></div>
+    <div><a href="cursos.html">Cursos</a></div>
+    <div><a href="libreta.html">Libreta</a></div>
+    <div><a href="pagos.html">Pagos</a></div>
+    <div class="pagina-ingresada"><a href="historial.html">Historial</a></div>
+</div>
+
+<header>
+    <h1>Historial de acciones</h1>
+</header>
+
+
+<table id="tabla-historial">
+    <thead>
+    <tr>
+        <th>Usuario</th>
+        <th>Acción</th>
+        <th>Entidad</th>
+        <th>Fecha</th>
+        <th>Datos Anteriores</th>
+        <th>Datos Nuevos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Aquí se cargará dinámicamente -->
+    </tbody>
+</table>
+
+
+
+
+<script src="../config-api/config-api.js"></script>
+<script src="../js/historial.js"></script>
 </body>
 </html>

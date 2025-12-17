@@ -8,7 +8,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background: linear-gradient(90deg, #2c3e50, #4a6073);
 }
 
 body {

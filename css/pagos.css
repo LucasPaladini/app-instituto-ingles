@@ -1,0 +1,11 @@
+
+
+.contenido-pagina {
+    padding-bottom: 4rem;
+}
+
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+    cursor: pointer;
+}

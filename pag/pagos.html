@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pagos.css">
+</head>
+<body>
+
+<div class="menu-div">
+    <div><a href="../index.html">Login</a></div>
+    <div><a href="alumnos.html">Alumnos</a></div>
+    <div><a href="cursos.html">Cursos</a></div>
+    <div><a href="libreta.html">Libreta</a></div>
+    <div class="pagina-ingresada"><a href="pagos.html">Pagos</a></div>
+    <div><a href="historial.html">Historial</a></div>
+</div>
+
+
+<header>
+    <h1> Gestión de pagos </h1>
+</header>
+
+<header>
+    <label for="anio">Año:</label>
+    <select id="anio"></select>
+</header>
+
+
+<div class="contenido-pagina">
+    <table class="tabla-pagos">
+        <thead>
+        <tr>
+            <th>DNI</th>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Mar</th>
+            <th>Abr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Ago</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dic</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+
+<script src="../config-api/config-api.js"></script>
+<script src="../js/pagos.js"></script>
+</body>
+</html>

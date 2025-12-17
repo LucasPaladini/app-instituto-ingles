@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (data.length > 0) {
                     localStorage.setItem("dniAlumno", dni);
                     localStorage.setItem("rol", "alumno");
+                    sessionStorage.setItem("usuarioLogueado", dni);
                     window.location.href = `pag/libreta.html`;
                 } else {
                     alert("No se encontró el alumno");

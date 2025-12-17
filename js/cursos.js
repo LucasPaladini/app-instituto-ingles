@@ -4,10 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cuerpoAlumnos = document.querySelector(".tabla-alumnos tbody");
     const inputCurso = document.getElementById("nombreCurso");
     const btnCrear = document.getElementById("crearCurso");
+    const usuario = sessionStorage.getItem("usuarioLogueado");
 
-    // -----------------------------------
-    // 🔹 Cargar cursos
-    // -----------------------------------
+    // Cargar cursos
     async function cargarCursos() {
         const res = await fetch(`${api_url}/cursos`);
         const cursos = await res.json();
@@ -65,9 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!cursos.length) contenedorAlumnos.style.display = "none";
     }
 
-    // -----------------------------------
-    // 🔹 Crear curso
-    // -----------------------------------
+    // Crear curso
     btnCrear.addEventListener("click", async () => {
         const nombre = inputCurso.value.trim();
         if (!nombre) return alert("Ingrese un nombre");
@@ -75,32 +72,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const res = await fetch(`${api_url}/cursos`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre })
+            body: JSON.stringify({ nombre, usuario })  // <-- enviamos el usuario
         });
 
         if (!res.ok) return alert("Error al crear curso");
-
         inputCurso.value = "";
         cargarCursos();
     });
 
-    // -----------------------------------
-    // 🔹 Funciones modificar/eliminar
-    // -----------------------------------
-    async function eliminarCurso(nombre) {
-        if (!confirm(`Eliminar curso "${nombre}"?`)) return;
-        await fetch(`${api_url}/cursos/${encodeURIComponent(nombre)}`, { method: "DELETE" });
-        cargarCursos();
-    }
 
+    // Modificar curso
     async function modificarCurso(nombre) {
         const nuevo = prompt("Nuevo nombre:", nombre);
         if (!nuevo) return;
         await fetch(`${api_url}/cursos/${encodeURIComponent(nombre)}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre: nuevo })
+            body: JSON.stringify({ nombre: nuevo, usuario })
         });
+        cargarCursos();
+    }
+
+// Eliminar curso
+    async function eliminarCurso(nombre) {
+        if (!confirm(`Eliminar curso "${nombre}"?`)) return;
+        await fetch(`${api_url}/cursos/${encodeURIComponent(nombre)}?usuario=${usuario}`, { method: "DELETE" });
         cargarCursos();
     }
 
