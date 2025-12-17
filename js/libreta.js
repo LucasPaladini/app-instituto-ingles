@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td><button class="boton-eliminar" data-idx="${idx}">🗑️ Eliminar</button></td>
                     <td><button class="boton-modificar" data-idx="${idx}">✏️ Modificar</button></td>` : ''}
                 </tr>`).join("")
-            : `<tr><td colspan="${rol === 'admin' ? 7 : 5}" style="color:white;">Sin notas</td></tr>`}
+            : `<tr><td colspan="${rol === 'admin' ? 7 : 5}" style="color:black;">Sin notas</td></tr>`}
         </tbody>
     </table>`;
 
