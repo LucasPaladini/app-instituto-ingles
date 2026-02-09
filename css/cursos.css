@@ -8,13 +8,13 @@ html, body {
 
 .cursos-contenido-titulos {
     display: flex;
-    justify-content: center; /* centra horizontalmente */
-    margin: 20px 0; /* opcional, para separar del resto */
+    justify-content: center;
+    margin: 20px 0;
     width: 100%;
 }
 
 .cursos-contenido-titulos table {
-    width: 60%; /* o el ancho que quieras */
+    width: 60%;
     border-collapse: collapse;
 }
 
@@ -32,7 +32,7 @@ html, body {
 /* Contenedor tabla de títulos */
 .cursos-contenido-titulos {
     display: flex;
-    justify-content: center; /* centra la tabla horizontalmente */
+    justify-content: center;
     margin: 20px 0;
     width: 100%;
 }
